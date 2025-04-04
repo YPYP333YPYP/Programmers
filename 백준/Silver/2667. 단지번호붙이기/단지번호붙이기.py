@@ -9,8 +9,9 @@ def bfs(x,y):
     q = deque()
     q.append((x,y))
     
-    visited[x][y] = True
+    graph[x][y] = 0
     cnt = 1
+    
     while q:
         x,y = q.popleft()
         
@@ -19,8 +20,8 @@ def bfs(x,y):
             ny = y + dy[i]
             
             if 0<= nx < N and 0 <= ny < N:
-                if graph[nx][ny] == 1 and not visited[nx][ny] :
-                    visited[nx][ny] = True
+                if graph[nx][ny] == 1: 
+                    graph[nx][ny] = 0  
                     q.append((nx,ny))
                     cnt +=1
     return cnt
@@ -28,15 +29,13 @@ def bfs(x,y):
 total = 0
 val = []
 graph = []
-
 for i in range(N):
     graph.append(list(map(int, input())))
     
-visited = [[False] * N for _ in range(N)]
 
 for i in range(N):
     for j in range(N):
-        if graph[i][j] == 1 and not visited[i][j]:
+        if graph[i][j] == 1:
             total += 1
             val.append(bfs(i, j))
             

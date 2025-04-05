@@ -13,7 +13,7 @@ for v in n_list:
     
     # 필요한 부 감독관 수 계산
     if now > 0:  # 남은 학생이 있는 경우만 부감독관 필요
-        tmp = (now + k - 1) // k 
+        tmp = ((now - 1) // k) + 1
         count += tmp
     
 print(count)

@@ -1,15 +1,24 @@
-from collections import Counter
+string = list(input())
 
-string = input()
-string = string.upper()
-counter = Counter(string)
-counts = counter.most_common()
 
-if len(counts) > 1:
-    v1,v2 = counts[0], counts[1]
-    if v1[1] == v2[1]:
+sdict = dict()
+
+for v in string:
+    v = v.upper()
+    if v in sdict.keys():
+        sdict[v] += 1
+    else:
+        sdict[v] = 1
+
+
+sdict = sorted(sdict.items(), key=lambda x: x[1], reverse=True)
+
+
+if len(sdict) > 1:
+    if sdict[0][1] == sdict[1][1]:
         print("?")
     else:
-        print(v1[0])
+        print(sdict[0][0])
 else:
-    print(counts[0][0])
+    print(sdict[0][0])
+
